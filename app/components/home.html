@@ -1,0 +1,63 @@
+
+
+<div protected>
+    <h1>This is the bulk ingest page.</h1>
+     <form #myForm="ngForm" novalidate>
+          <div class="form-group">
+            <label>System Of Origin*</label>
+              <select name="origin" class="form-control" [(ngModel)]="defaultSoO">
+                  <option *ngFor="let origin of systemOfOrigins" [ngValue]="origin">{{origin.SystemOfOriginDesc}}</option>
+              </select>
+
+            <label>ContentType*</label>
+
+              <select name="contentTypes" class="form-control" [(ngModel)]="defaultContentType">
+                <option *ngFor="let contentType of contentTypes" [ngValue]="contentType">{{contentType.ContentTypeDesc}}</option>
+              </select>
+
+            <label>Channels*</label>
+              <select name="channels"  multiple="multiple" class="form-control" [(ngModel)]="channels">
+              <option *ngFor="let channel of channels" [ngValue]='channel'>{{channel.ChannelName}}</option>
+              </select>
+
+            <div>
+              <label>Priority*</label>
+              <select name="priorityForm" class="form-control" [(ngModel)]="selectedPriority">
+                <option *ngFor="let priority of priorities" [ngValue]="priority">{{priority.Desc}}</option>
+              </select>
+
+              <div *ngIf="selectedPriority.Desc == 'Rush'">
+                <label>RushReason*</label>
+                <input>
+              </div>
+            </div>
+
+            <label>Rendition</label>
+              <select name="rend" class="form-control" [(ngModel)]="renditionSelected">
+                <option *ngFor="let rend of renditions" [ngValue]="rend">{{rend.RenditionDesc}}</option>
+              </select>
+
+            <label>Format</label>
+              <select name="format" class="form-control" [(ngModel)]="formatSelected" (change)="updateWorkFlowChange(formatSelected)">
+                <option *ngFor="let format of formats" [ngValue]="format">{{format.Description}}</option>
+              </select>
+
+           <label>Workflow</label>
+              <select name="workflow" class="form-control" [(ngModel)]="workflow">
+              <option *ngFor="let workflow of workflows" [ngValue]="workflow">{{workflow.Name}}</option>
+              </select>
+
+            <label>ArchivalRule</label>
+            <select name="archivalRule" class="form-control" [(ngModel)]="archivalRule">
+              <option *ngFor="let archivalRule of archivalRules" [ngValue]="archivalRule">{{archivalRule.RuleName}}</option>
+              </select>
+
+            <label>Attributes</label>
+            <input>
+           
+            <div>Upload Files/Folders <input><button (click)="browseFile()">Browse file/folder</button></div>
+
+        </div>
+     </form>
+    <button (click)="logOut()">Logout</button>
+</div>
