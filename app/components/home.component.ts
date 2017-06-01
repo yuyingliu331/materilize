@@ -6,7 +6,7 @@ import { Modal } from 'angular2-modal/plugins/bootstrap';
 @Component({
   selector: 'home',
   templateUrl: '/app/components/home.html',
-   providers: [Modal]
+  providers: [Modal]
 })
 export class HomeComponent implements OnInit   {
   systemOfOrigins = new Array();
@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit   {
  }
 
   browseFile() {
-    this.modal.alert()
+   // this.modal.alert()
   }
 
   getSelectedValue(name: any){
